@@ -1,9 +1,35 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Home_screen extends StatelessWidget {
+class Home_screen extends StatefulWidget {
   const Home_screen({super.key});
+  @override
+  State<Home_screen> createState() => _Home_screenState();
+}
+
+class _Home_screenState extends State<Home_screen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 0);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +77,7 @@ class Home_screen extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -69,39 +95,49 @@ class Home_screen extends StatelessWidget {
                     border: InputBorder.none),
               ),
             ),
-            TabBar(tabs: [
-              Tab(
-                text: "HOT",
-              ),
-              Tab(
-                text: "HOT",
-              ),
-              Tab(
-                text: "HOT",
-              ),
-              Tab(
-                text: "HOT",
-              ),
-            ]),
+            TabBar(
+                labelColor: Colors.amber,
+                controller: _tabController,
+                unselectedLabelColor: Colors.white.withOpacity(0.5),
+                isScrollable: true,
+                indicator: UnderlineTabIndicator(
+                    borderSide: BorderSide(width: 3, color: Colors.amber),
+                    insets: EdgeInsets.symmetric(horizontal: 15)),
+                labelStyle:
+                    TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                labelPadding: EdgeInsets.symmetric(horizontal: 20),
+                tabs: [
+                  Tab(
+                    text: "HOT Coffee",
+                  ),
+                  Tab(
+                    text: "Cold Coffee",
+                  ),
+                  Tab(
+                    text: "Cappuccino",
+                  ),
+                  Tab(
+                    text: "Americano",
+                  ),
+                ]),
             SizedBox(
               height: 20,
             ),
             Center(
-              child: [
-                Container(
-                  color: Colors.red,
-                ),
-                Container(
-                  color: Colors.red,
-                ),
-                Container(
-                  color: Colors.red,
-                ),
-                Container(
-                  color: Colors.red,
-                )
-              ][_tabController.index]
-            )
+                child: [
+              Container(
+                color: Colors.red,
+              ),
+              Container(
+                color: Colors.red,
+              ),
+              Container(
+                color: Colors.red,
+              ),
+              Container(
+                color: Colors.red,
+              )
+            ][_tabController.index])
           ],
         ),
       )),
