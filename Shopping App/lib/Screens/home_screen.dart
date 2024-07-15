@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:shopping_app/widgets/home_widget.dart';
 
 class Home_screen extends StatefulWidget {
   const Home_screen({super.key});
@@ -125,18 +126,10 @@ class _Home_screenState extends State<Home_screen>
             ),
             Center(
                 child: [
-              Container(
-                color: Colors.red,
-              ),
-              Container(
-                color: Colors.red,
-              ),
-              Container(
-                color: Colors.red,
-              ),
-              Container(
-                color: Colors.red,
-              )
+             home_widget(),
+             home_widget(),
+             home_widget(),
+             home_widget()
             ][_tabController.index])
           ],
         ),
