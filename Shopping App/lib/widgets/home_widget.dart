@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
@@ -24,7 +25,15 @@ class home_widget extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 8, horizontal: 13),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color(0xFF212325)),
+                color: Color(0xFF212325),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    spreadRadius: 1,
+                    blurRadius: 8
+                  )
+                ]
+                ),
           )
       ],
     );
