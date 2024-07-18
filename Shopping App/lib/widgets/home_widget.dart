@@ -28,12 +28,50 @@ class home_widget extends StatelessWidget {
                 color: Color(0xFF212325),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.4),
-                    spreadRadius: 1,
-                    blurRadius: 8
-                  )
-                ]
+                      color: Colors.black.withOpacity(0.4),
+                      spreadRadius: 1,
+                      blurRadius: 8)
+                ]),
+            child: Column(
+              children: [
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    child: Image.asset(
+                      "assets/images/${img[i]}.png",
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        img[i],
+                        style: TextStyle(
+                          fontSize:18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white, 
+                        ),
+                      ),
+                      Text(
+                        "Best coffee",
+                        style: TextStyle(
+                          fontSize:18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white, 
+                        ),
+                      )
+                    ],
+                    ),
+                  )
+              ],
+            ),
           )
       ],
     );
