@@ -5,6 +5,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:shopping_app/widgets/home_widget.dart';
 
+import '../widgets/home_navigationbar.dart';
+
 class Home_screen extends StatefulWidget {
   const Home_screen({super.key});
   @override
@@ -133,7 +135,7 @@ class _Home_screenState extends State<Home_screen>
             ][_tabController.index])
           ],
         ),
-      )),
+      )),bottomNavigationBar: home_bar(),
     );
   }
 }

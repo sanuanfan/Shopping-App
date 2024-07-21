@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 
+import '../Screens/buy_screen.dart';
+
 class home_widget extends StatelessWidget {
   List img = [
     'Latte',
@@ -33,9 +35,12 @@ class home_widget extends StatelessWidget {
                       blurRadius: 8)
                 ]),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>buyScreen(img[i])));
+                  },
                   child: Container(
                     margin: EdgeInsets.all(10),
                     child: Image.asset(
@@ -50,26 +55,56 @@ class home_widget extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+
                     children: [
                       Text(
                         img[i],
                         style: TextStyle(
-                          fontSize:18,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, 
+                          color: Colors.white,
+                          // backgroundColor: Colors.white
                         ),
+                      ),
+                      SizedBox(
+                        height: 6,
                       ),
                       Text(
                         "Best coffee",
                         style: TextStyle(
-                          fontSize:18,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, 
+                          color: Colors.white.withOpacity(0.5),
                         ),
-                      )
+                      ),
                     ],
-                    ),
-                  )
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "\$30",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromARGB(255, 244, 140, 5)),
+                      ),
+                      Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 244, 140, 5),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ))
+                    ],
+                  ),
+                ),
               ],
             ),
           )
